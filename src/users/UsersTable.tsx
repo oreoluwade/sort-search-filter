@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Person, Sorting } from './types';
 import Header from './Header';
+import { isNumber } from './type-guards';
 
 const UsersTable = () => {
   const [users, setUsers] = useState<Person[]>([]);
@@ -47,7 +48,7 @@ const UsersTable = () => {
       const valueOfA = a[internalSortKey];
       const valueOfB = b[internalSortKey];
 
-      if (typeof valueOfA === 'number' || typeof valueOfB === 'number') {
+      if (isNumber(valueOfA) || isNumber(valueOfB)) {
         return isDescendingSort ? +valueOfB - +valueOfA : +valueOfA - +valueOfB;
       }
       if (isDescendingSort) {
