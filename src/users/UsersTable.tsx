@@ -29,12 +29,12 @@ const UsersTable = () => {
   }, []);
 
   const handleSort = (incomingSortKey: string) => {
-    const isDescendingSort = sorting.order === 'asc';
+    const isAscendingSort = sorting.order === 'asc';
 
     if (sorting.sortKey === incomingSortKey) {
       setSorting({
         sortKey: incomingSortKey,
-        order: isDescendingSort ? 'desc' : 'asc'
+        order: isAscendingSort ? 'desc' : 'asc'
       });
     } else {
       setSorting({
@@ -49,9 +49,9 @@ const UsersTable = () => {
       const valueOfB = b[internalSortKey];
 
       if (isNumber(valueOfA) || isNumber(valueOfB)) {
-        return isDescendingSort ? +valueOfB - +valueOfA : +valueOfA - +valueOfB;
+        return isAscendingSort ? +valueOfB - +valueOfA : +valueOfA - +valueOfB;
       }
-      if (isDescendingSort) {
+      if (isAscendingSort) {
         return valueOfA.localeCompare(valueOfB);
       }
       return valueOfB.localeCompare(valueOfA);
